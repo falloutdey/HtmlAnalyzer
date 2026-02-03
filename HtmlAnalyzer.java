@@ -18,7 +18,7 @@ class HtmlAnalyzer {
         } catch (MalformedURLException e) {
             System.out.println("URL connection error");
             return;
-            
+
         } catch (IOException e) {
             System.out.println("URL connection error");
             return;
