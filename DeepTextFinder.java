@@ -1,26 +1,33 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
+import java.io.StringReader;
 
 public class DeepTextFinder {
     
     // public void findText(URL url) throws IOException{
-    public void findText(URL url) throws IOException{
+    public void findText(String html) throws IOException{
 
-        // BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+        // BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
+        BufferedReader reader = new BufferedReader(new StringReader(html));
         String line;
         int depth = 0;
         int maxDepth = 0;
         String deepestLine = "";
 
         while ((line = reader.readLine()) != null) {
-            if(line.startsWith("<") && !line.startsWith("</") && line.endsWith(">")) {
-                depth++;
-            } else if (line.startsWith("</") && line.endsWith(">")) {
-                depth --;
+            line = line.trim();
+            if(line.isEmpty()) {
+                continue;
+            } else if(line.startsWith("</") && line.endsWith(">")) {
+                depth--;
+
+                //teste
+                System.out.println(depth);
+            } else if (line.startsWith("<") && line.endsWith(">")) {
+                depth ++;
+
+                //teste
+                System.out.println(depth);
             } else {
                 if(depth > maxDepth) {
                     maxDepth = depth;
@@ -29,6 +36,7 @@ public class DeepTextFinder {
             }
         }
 
+        reader.close();
         System.out.println(deepestLine);
     }
 }
