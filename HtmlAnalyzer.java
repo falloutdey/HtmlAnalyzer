@@ -23,10 +23,20 @@ class HtmlAnalyzer {
         // }
 String htmlTeste = """
 <html>
-  <body>
-    <p>Olá mundo</p>
-  </body>
+<body>
+<div>
+<p>
+Texto
+</div>
+</p>
+</body>
 </html>
+
+
+
+
+
+
 """;
 
 

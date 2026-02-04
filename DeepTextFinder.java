@@ -23,6 +23,11 @@ public class DeepTextFinder {
 
                 //teste
                 System.out.println(depth);
+
+                if(depth < 0) {
+                    System.out.println("Malformed Html");
+                    return;
+                }
             } else if (line.startsWith("<") && line.endsWith(">")) {
                 depth ++;
 
@@ -37,6 +42,11 @@ public class DeepTextFinder {
         }
 
         reader.close();
+        if(depth != 0) {
+            System.out.println("malformed HTML");
+            return;
+        }
+
         System.out.println(deepestLine);
     }
 }
