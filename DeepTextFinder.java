@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Stack;
 
 
 public class DeepTextFinder {
@@ -31,6 +32,9 @@ public class DeepTextFinder {
                     return;
                 }
             } else if (line.startsWith("<") && line.endsWith(">")) {
+                Stack<String> tagStack = new Stack<>();
+                
+                
                 depth ++;
 
                 //teste
