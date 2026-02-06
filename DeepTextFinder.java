@@ -1,14 +1,16 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.StringReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+
 
 public class DeepTextFinder {
     
     // public void findText(URL url) throws IOException{
-    public void findText(String html) throws IOException{
+    public void findText(URL url) throws IOException{
 
-        // BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
-        BufferedReader reader = new BufferedReader(new StringReader(html));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
         String line;
         int depth = 0;
         int maxDepth = 0;
@@ -25,7 +27,7 @@ public class DeepTextFinder {
                 System.out.println(depth);
 
                 if(depth < 0) {
-                    System.out.println("Malformed Html");
+                    System.out.println("malformed HTML");
                     return;
                 }
             } else if (line.startsWith("<") && line.endsWith(">")) {
