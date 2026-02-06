@@ -5,7 +5,6 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Stack;
 
-
 public class DeepTextFinder {
     
     // public void findText(URL url) throws IOException{
@@ -16,6 +15,7 @@ public class DeepTextFinder {
         int depth = 0;
         int maxDepth = 0;
         String deepestLine = "";
+        Stack<String> tagStack = new Stack<>();
 
         while ((line = reader.readLine()) != null) {
             line = line.trim();
@@ -32,9 +32,6 @@ public class DeepTextFinder {
                     return;
                 }
             } else if (line.startsWith("<") && line.endsWith(">")) {
-                Stack<String> tagStack = new Stack<>();
-                
-                
                 depth ++;
 
                 //teste
