@@ -5,7 +5,7 @@ import java.net.URL;
 class HtmlAnalyzer {
     public static void main(String[] args) throws IOException {
 
-        if(args.length == 0) {
+        if(args.length == 0 || args[0].isBlank()) {
             System.out.println("URL connection error");
             return;
         }

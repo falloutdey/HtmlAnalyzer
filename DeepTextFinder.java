@@ -9,7 +9,7 @@ import java.util.Deque;
 public class DeepTextFinder {
     
     // public void findText(URL url) throws IOException{
-    public void findText(URL url) throws IOException{
+    public void findText(URL url) {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8))){
         String line;
@@ -65,8 +65,9 @@ public class DeepTextFinder {
 
         System.out.println(deepestLine);
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("URL connection error");
+            return;
         }
     }
 
