@@ -3,25 +3,35 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class DeepTextFinder {
     
     // public void findText(URL url) throws IOException{
     public void findText(URL url) throws IOException{
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
         String line;
         int depth = 0;
         int maxDepth = 0;
         String deepestLine = "";
-        Stack<String> tagStack = new Stack<>();
+        Deque<String> tagStack = new ArrayDeque<>();
 
         while ((line = reader.readLine()) != null) {
             line = line.trim();
-            if(line.isEmpty()) {
-                continue;
-            } else if(line.startsWith("</") && line.endsWith(">")) {
+            if(line.isEmpty()) continue;
+            
+            else if(line.startsWith("</") && line.endsWith(">")) {
+
+                String tagName = extractTagName(line);
+
+                if(tagStack.isEmpty() || !tagStack.pop().equals(tagName)) {
+                    System.out.println("malformed HTML");
+                    return;
+                }
+
                 depth--;
 
                 //teste
@@ -31,7 +41,12 @@ public class DeepTextFinder {
                     System.out.println("malformed HTML");
                     return;
                 }
+
             } else if (line.startsWith("<") && line.endsWith(">")) {
+
+                String tagName = extractTagName(line);
+                tagStack.push(tagName);
+
                 depth ++;
 
                 //teste
@@ -44,12 +59,21 @@ public class DeepTextFinder {
             }
         }
 
-        reader.close();
-        if(depth != 0) {
+        if(depth != 0 || !tagStack.isEmpty()) {
             System.out.println("malformed HTML");
             return;
         }
 
         System.out.println(deepestLine);
+        
+        } catch (Exception e) {
+            System.out.println("URL connection error");
+        }
+    }
+
+    private String extractTagName(String line) {
+        return line.startsWith("</") 
+            ? line.substring(2, line.length() - 1)
+            : line.substring(1, line.length() - 1);
     }
 }
