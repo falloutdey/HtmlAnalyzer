@@ -11,8 +11,7 @@ public class DeepTextFinder {
     // public void findText(URL url) throws IOException{
     public void findText(URL url) throws IOException{
 
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8))){
         String line;
         int depth = 0;
         int maxDepth = 0;
@@ -65,7 +64,7 @@ public class DeepTextFinder {
         }
 
         System.out.println(deepestLine);
-        
+
         } catch (Exception e) {
             System.out.println("URL connection error");
         }
