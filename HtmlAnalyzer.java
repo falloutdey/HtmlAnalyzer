@@ -1,10 +1,9 @@
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 class HtmlAnalyzer {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         if(args.length == 0 || args[0].isBlank()) {
             System.out.println("URL connection error");
@@ -16,12 +15,8 @@ class HtmlAnalyzer {
             DeepTextFinder textFinder = new DeepTextFinder();
             textFinder.findText(url);
             
-        } catch (MalformedURLException e) {
-            System.out.println("URL connection error");
-            return;
-
         } catch (IOException e) {
-            System.out.println("URL connection error");
+            System.err.println("URL connection error");
             return;
         }
     }
