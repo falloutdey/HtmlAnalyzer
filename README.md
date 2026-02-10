@@ -26,10 +26,10 @@ O projeto foi desenvolvido para ser executado localmente via **linha de comando*
 2. Abra o terminal e navegue até o diretório onde estão os arquivos.
 
 3. Compile o programa:
-<br>javac HtmlAnalyzer.java
+<br>`javac HtmlAnalyzer.java`
 
 4. Execute o programa informando uma URL válida:
-<br>java HtmlAnalyzer https://exemplo.com/pagina.html
+<br>`java HtmlAnalyzer https://exemplo.com/pagina.html`
 
 ### Saídas possíveis
 
@@ -41,9 +41,9 @@ O projeto foi desenvolvido para ser executado localmente via **linha de comando*
 
 ### Estrutura do projeto
 
-1. HtmlAnalyzer.java
+1. `HtmlAnalyzer.java`
 <br>Responsável por validar a entrada, criar a URL e iniciar a análise.
 
-2. DeepTextFinder.java
+2. `DeepTextFinder.java`
 <br>Responsável pela leitura do HTML, controle de profundidade, validação estrutural e extração do texto mais profundo.
 
