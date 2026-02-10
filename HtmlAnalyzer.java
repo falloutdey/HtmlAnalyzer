@@ -16,7 +16,7 @@ class HtmlAnalyzer {
             textFinder.findText(url);
             
         } catch (IOException e) {
-            System.err.println("URL connection error");
+            System.out.println("URL connection error");
             return;
         }
     }
