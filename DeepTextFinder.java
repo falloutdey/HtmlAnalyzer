@@ -32,9 +32,6 @@ public class DeepTextFinder {
 
                 depth--;
 
-                //teste
-                System.out.println(depth);
-
                 if(depth < 0) {
                     System.out.println("malformed HTML");
                     return;
@@ -47,8 +44,6 @@ public class DeepTextFinder {
 
                 depth ++;
 
-                //teste
-                System.out.println(depth);
             } else {
                 if(depth > 0 && depth > maxDepth) {
                     maxDepth = depth;
