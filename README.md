@@ -31,6 +31,16 @@ O projeto foi desenvolvido para ser executado localmente via **linha de comando*
 4. Execute o programa informando uma URL válida:
 - `java HtmlAnalyzer https://exemplo.com/pagina.html`
 
+## Lógica de funcionamento
+
+A análise do HTML é realizada de forma linear, linha por linha, seguindo as premissas do problema:
+
+- Cada tag de abertura incrementa o nível de profundidade e é armazenada em uma pilha
+- Cada tag de fechamento reduz a profundidade e é validada contra a pilha de abertura
+- Trechos de texto são avaliados apenas quando estão dentro de pelo menos uma tag
+- O texto associado ao maior nível de profundidade encontrado é armazenado como resultado
+- Caso a estrutura de abertura e fechamento das tags seja inválida, o HTML é considerado malformado
+
 ### Saídas possíveis
 
 1. Um trecho de texto, caso o HTML seja válido
