@@ -12,12 +12,12 @@ O projeto foi implementado seguindo regras específicas de parsing e validação
 
 O projeto foi desenvolvido para ser executado localmente via **linha de comando**, utilizando apenas o **Java JDK 17**.
 
-### Pré-requisitos
+## Pré-requisitos
 - Java JDK 17 instalado
 - Variável de ambiente `JAVA_HOME` configurada corretamente
 - Acesso a internet para leitura do HTML via URL
 
-### Passo a passo
+## Passo a passo
 
 1. Certifique-se de que os seguintes arquivos estão no mesmo diretório:
    - `HtmlAnalyzer.java`
@@ -41,7 +41,7 @@ A análise do HTML é realizada de forma linear, linha por linha, seguindo as pr
 - O texto associado ao maior nível de profundidade encontrado é armazenado como resultado
 - Caso a estrutura de abertura e fechamento das tags seja inválida, o HTML é considerado malformado
 
-### Saídas possíveis
+## Saídas possíveis
 
 1. Um trecho de texto, caso o HTML seja válido
 
@@ -49,7 +49,7 @@ A análise do HTML é realizada de forma linear, linha por linha, seguindo as pr
 
 3. URL connection error, caso não seja possível acessar a URL informada
 
-### Estrutura do projeto
+## Estrutura do projeto
 
 1. `HtmlAnalyzer.java`
 <br>Responsável por validar a entrada, criar a URL e iniciar a análise.
