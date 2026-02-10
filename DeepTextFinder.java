@@ -1,17 +1,15 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.io.StringReader;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class DeepTextFinder {
-    
-    // public void findText(URL url) throws IOException{
-    public void findText(URL url) {
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8))){
+    public void findText(String url) {
+
+        // try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8))){
+        try(BufferedReader reader = new BufferedReader(new StringReader(url))) {
         String line;
         int depth = 0;
         int maxDepth = 0;
